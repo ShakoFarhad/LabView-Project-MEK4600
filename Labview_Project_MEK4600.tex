@@ -79,18 +79,19 @@ University College of Southeast Norway",
 \maketitle
 
 \begin{abstract}
-Rask forklaring på metoder, resultater og konklusjon. Skal kunne lese abstracten og dermed kunne vite hva raporten handler om.
+Rask forklaring på metoder, resultater og konklusjon. Skal kunne lese abstracten og dermed kunne vite hva raporten handler om. \bigskip
+
+The water flows down from a tank, through a tube and a microphone picks up the flow sound.The sound signals from the microphone went through an amplifier and then the DAQ wrote the signals to a file that was stored on the computer. By adjusting the height of the water tank we strived to reach certain Reynold numbers, 50, 500 2000 and 4000.
+
 \end{abstract}
 
 \section*{Introduction}
-En forklaring på hva som blir gjort, motivasjon for det og annen forskning eller eksempler på liknende raport/eksperiment.\\ \bigskip
+Trying to measure turbulence by only using sound waves from the flowing water is something that has been tried many times before, but the results has shown varying degrees of success. The limitations are many and they usually come down to the lack of adequate technology. \bigskip 
 
-\begin{equation} \label{eq:1D-Diffusion}
- \frac{\partial^2 u(x,t)}{\partial x^2} =\frac{\partial u(x,t)}{\partial t}, t> 0, x\in [0,1]
-\end{equation}
+In our efforts we taped a microphone to a tube that had water flowing through with different Reynolds numbers, 50, 500, 2000 and 4000. While we did observe that higher Reynolds numbers resulted in a higher mean energy output in the frequency spectra plots, we also saw that the data was easily corrupted by noise.
 
 \section*{Theoretical models and methods}
-We created a program in LabView that read sound signals from a microphone and both wrote those signals to a file in the 'lvm' format. The sound signals from the microphone went through an amplifier and then the DAQ wrote the signals to a file that was stored on the computer. We chose the sampling frequency to be $20000$ Hz because we believed that the highest signal frequency would be at around $8000$ Hz. From the Nyquist-Shannon sampling theorem we knew that we had to select a sampling frequency that was two times the highest signal frequency. And because we wanted to avoid loss of data from inadequate sampling frequency, we added another $4000$ Hz, giving us a total of $20000$ Hz. \bigskip
+We wrote a program in LabView that read sound signals from a microphone and both wrote those signals to a file in the 'lvm' format. The sound signals from the microphone went through an amplifier and then the DAQ wrote the signals to a file that was stored on the computer. We chose the sampling frequency to be $20000$ Hz because we believed that the highest signal frequency would be at around $8000$ Hz. From the Nyquist-Shannon sampling theorem we knew that we had to select a sampling frequency that was two times the highest signal frequency. And because we wanted to avoid loss of data from inadequate sampling frequency, we added another $4000$ Hz, giving us a total of $20000$ Hz. \bigskip
 
 The experiment was setup as seen in figure \ref{fig:1}. The water flows down from the white tank, through a tube on the table, behind the laptop, and before it flows in to the blue bucket at the bottom right, the microphone picks up the flow sound. The blue bucket is placed on top of a digital flat scale, measuring in grams. The height of the white tank was measured from the water surface to the floor with a digital laser device, and then subtracted that height with the height from the tube end to the floor. (MÅ VITE HVOR MYE TUBE END TIL FLOOR ER FOR HØYED! FARNAZ SKAL VITE DETTE) We were supposed to reach certain Reynold numbers (50, 500 2000 and 4000) by adjusting the height of the white water tank. \bigskip
 
