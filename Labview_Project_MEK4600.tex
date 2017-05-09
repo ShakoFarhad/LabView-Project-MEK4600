@@ -18,24 +18,30 @@
 
 \usepackage{filecontents}
 \begin{filecontents}{mybib.bib}
-@book{Langtangen-2016,
-   author    = "Hans Petter Langtangen \& Svein Linge",
-   title     = "Finite Difference Computing
-with PDEs - A Modern Software
-Approach",
-   publisher = "Center for Biomedical Computing, Simula Research Laboratory
-Department of Informatics, University of Oslo
-Department of Process, Energy and Environmental Technology,
-University College of Southeast Norway",
-   address   = "\url{https://hplgit.github.io/fdm-book/doc/pub/book/pdf/fdm-book-4screen.pdf}",
+@book{Turbulence,
+   author    = "William K. George
+Department of Aeronautics
+Imperial College of London
+London, UK
+and
+Professor of Turbulence Emeritus
+Department of Applied Mechanics
+Chalmers University of Technology
+Gothenburg, Sweden",
+   title     = "Lectures in Turbulence for the 21st Century",
+   publisher = "",
+   address   = "\url{}",
    pages   = "247--288",
-   year      = "2016"
+   year      = "2013"
 }
 
-@unpublished{Analytical1D-Diffusion,
-   title     = "The {D}iffusion {E}quation",
-   author = "University of Munster, Institute of Theoretical Physics",
-   note   = "\url{http://pauli.uni-muenster.de/tp/fileadmin/lehre/NumMethoden/WS0910/ScriptPDE/Heat.pdf}"
+@unpublished{SoundofTurbulence,
+   title     = "The sound of turbulence",
+   author = "Lily Xu at Department of Mathematics
+Faculty of Mathematics and Natural
+Sciences
+University of Oslo",
+   note   = "\url{https://www.google.no/url?sa=t&rct=j&q=&esrc=s&source=web&cd=1&ved=0ahUKEwicndmvh-PTAhWoNJoKHdZ1A-8QFggpMAA&url=https%3A%2F%2Fwww.duo.uio.no%2Fbitstream%2Fhandle%2F10852%2F45389%2FThesis_Lily_Xu.pdf%3Fsequence%3D1&usg=AFQjCNF0bezoP5hYeMiMHhQcyxQqw8JG3Q}"
 }
 
 \end{filecontents}
@@ -44,8 +50,8 @@ University College of Southeast Norway",
 \usepackage{bibentry}
 \nobibliography*
 
-\title{Project 5 - FYS4150/FYS3150}
-\author{Shako Farhad \& Simon Millerjord}
+\title{LabView project - MEK4600}
+\author{Shako Farhad, Valentyna Pysarieva \& Farnaz Rezvany}
 \date{\today}
 
 \begin{document}
@@ -79,28 +85,28 @@ University College of Southeast Norway",
 \maketitle
 
 \begin{abstract}
-Rask forklaring på metoder, resultater og konklusjon. Skal kunne lese abstracten og dermed kunne vite hva raporten handler om. \bigskip
-
-The water flows down from a tank, through a tube and a microphone picks up the flow sound.The sound signals from the microphone went through an amplifier and then the DAQ wrote the signals to a file that was stored on the computer. By adjusting the height of the water tank we strived to reach certain Reynold numbers, 50, 500 2000 and 4000.
+With ever increasing computational power, we get more and more numerical data on turbulence, but at the same time there is a lack of experimental data on turbulence. We examined turbulence of water flowing through a plastic tube by capturing the sound waves emitted with a microhphone. \\
+Our experiments were set up in the following manner; water flows down from a tank, through a tube and a microphone picks up the flow sound. The sound signals from the microphone went through an amplifier and then the DAQ wrote the signals to a file that was stored on the computer. By adjusting the height of the water tank we strove to reach certain Reynold numbers, $50$, $500$, $2000$ and $4000$. \\
+The higher the Reynolds number, the higher the energy output is. At the same time the data was contaminated with noise. Because of this, our findings may be inconclusive.
 
 \end{abstract}
 
 \section*{Introduction}
-Trying to measure turbulence by only using sound waves from the flowing water is something that has been tried many times before, but the results has shown varying degrees of success. The limitations are many and they usually come down to the lack of adequate technology. \bigskip 
+Turbulence is ever present in the air we breathe, the water we drink, the clouds above us, the blood that flows through our veins, and much more. The exploration of turbulence is important to understand all these integral mechanism in our lives \cite{Turbulence}. We will examine how sound from flowing water can be used to say something about the turbulence in said water.\bigskip
+
+Trying to measure turbulence by only using sound waves from the flowing water is something that has been tried many times before, but the results has shown varying degrees of success. The limitations are many and they usually come down to the lack of adequate equipment. But despite this, Lily Xu \cite{SoundofTurbulence}, a master student at UiO, had used similar methods to us to measure turbulence in hopes to fight aneurysms that can cause strokes and sudden deaths. \bigskip 
 
 In our efforts we taped a microphone to a tube that had water flowing through with different Reynolds numbers, 50, 500, 2000 and 4000. While we did observe that higher Reynolds numbers resulted in a higher mean energy output in the frequency spectra plots, we also saw that the data was easily corrupted by noise.
 
 \section*{Theoretical models and methods}
-We wrote a program in LabView that read sound signals from a microphone and both wrote those signals to a file in the 'lvm' format. The sound signals from the microphone went through an amplifier and then the DAQ wrote the signals to a file that was stored on the computer. We chose the sampling frequency to be $20000$ Hz because we believed that the highest signal frequency would be at around $8000$ Hz. From the Nyquist-Shannon sampling theorem we knew that we had to select a sampling frequency that was two times the highest signal frequency. And because we wanted to avoid loss of data from inadequate sampling frequency, we added another $4000$ Hz, giving us a total of $20000$ Hz. \bigskip
+We wrote a program in LabView that read sound signals from a microphone and both wrote those signals to a file in the 'lvm' format. The sound signals from the microphone went through an amplifier and then the DAQ wrote the signals to a file that was stored on the computer. It was made sure that the signal from the amplifier to the DAQ was between $\pm 10$ V, to avoid the signal from being truncated at the lower and upper ends. \bigskip 
 
-The experiment was setup as seen in figure \ref{fig:1}. The water flows down from the white tank, through a tube on the table, behind the laptop, and before it flows in to the blue bucket at the bottom right, the microphone picks up the flow sound. The blue bucket is placed on top of a digital flat scale, measuring in grams. The height of the white tank was measured from the water surface to the floor with a digital laser device, and then subtracted that height with the height from the tube end to the floor. (MÅ VITE HVOR MYE TUBE END TIL FLOOR ER FOR HØYED! FARNAZ SKAL VITE DETTE) We were supposed to reach certain Reynold numbers (50, 500 2000 and 4000) by adjusting the height of the white water tank. \bigskip
+In LabView we could also set the amount of samples to read each time. This meant that the DAQ would store a vector of specific length with values before calling the CPU to write the contents of that vector to the hardrive on the computer. It was important to not have a too long vector, as it may fill up the local memory of the DAQ. It was also important to not have a too short vector, because it would make very many calls to the CPU to write to the hardrive. This would lead to high CPU usage and heat output, and slowdowns in other programs. We chose the vector length to be $2^{11} = 2048$. A multiple of $2$ makes better use of the local memory of the DAQ, and a vector length of $2048$ made sure that the DAQ did not overload the CPU with write calls. \bigskip
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=150mm]{ExperimentSetup.png}
-    \caption{The setup of the experiments. The white tank at the top contains water that flows through the tube down into the blue bucket. The flow sound signals are measured with a microphone that is amplified and stored on the laptop with the white DAQ box. The water flow was controlled with a valve that was positioned on the table in front of the girl.}
-    \label{fig:1}
-\end{figure}
+We chose the sampling frequency to be $20000$ Hz because we believed that the highest signal frequency would be at around $8000$ Hz. From the Nyquist-Shannon sampling theorem we knew that we had to select a sampling frequency that was two times the highest signal frequency. And because we wanted to avoid loss of data from inadequate sampling frequency, we added another $4000$ Hz, giving us a total of $20000$ Hz. \bigskip
+
+The experiment was setup as seen in figure \ref{fig:1}. The water flows down from the white tank, through a tube on the table, behind the laptop, and before it flows in to the blue bucket at the bottom right, the microphone picks up the flow sound. The blue bucket is placed on top of a digital flat scale, measuring in grams. The height of the white tank was measured from the water surface to the floor with a digital laser device, and then subtracted that height with the height from the tube end to the floor, which was about 0.47 m. We were supposed to reach certain Reynold numbers (50, 500 2000 and 4000) by adjusting the height of the white water tank. \bigskip
+
 
 The Reynolds number is given by:
 
@@ -114,43 +120,60 @@ To calculate the velocity, $v$, we used the formula $v=\frac{V}{t\cdot A}$, wher
     \centering
     \begin{tabular}{|c|c|c|c|c|}\hline
     Reynolds number & Velocity [m/s] & Height [m] & Mass [kg] & Time [s] \\ \hline
-    52.0075 & 0.0066 & 0.6320 & 0.0970 & 300\\ \hline
-    512.0324 & 0.0651 & 0.8440 & 0.9550 & 300\\ \hline
-    1940.3614 & 0.2466 & 1.4900 & 3.6190 & 300\\ \hline
-    3728.9897 & 0.4738 & 3.1400 & 6.9550 & 300\\ \hline
+    52.0075 & 0.0066 & 0.1620 & 0.0970 & 300\\ \hline
+    512.0324 & 0.0651 & 0.3740 & 0.9550 & 300\\ \hline
+    1940.3614 & 0.2466 & 1.0200 & 3.6190 & 300\\ \hline
+    3728.9897 & 0.4738 & 2.6700 & 6.9550 & 300\\ \hline
     \end{tabular}
     \caption{Data from four different experiments where the white tank was placed at different heights.}
     \label{tab:1}
 \end{table}
 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=150mm]{ExperimentSetup.png}
+    \caption{The setup of the experiments. The white tank at the top contains water that flows through the tube down into the blue bucket. The flow sound signals are measured with a microphone that is amplified and stored on the laptop with the white DAQ box. The water flow was controlled with a valve that was positioned on the table in front of the girl.}
+    \label{fig:1}
+\end{figure}
+
 \section*{Results}
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=180mm]{ReVsHeightPlot.png}
-    \caption{Diminishing returns are starting to be visible already at $1.5$ m height. More data points are needed.}
+    \includegraphics[width=170mm]{ReVsHeightPlot.png}
+    \caption{Diminishing returns are starting to be visible already at $1$ m height. More data points are needed.}
     \label{fig:2}
 \end{figure}
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=180mm]{FrequencySpectraPlot.png}
-    \caption{}
+    \includegraphics[width=170mm]{FrequencySpectraPlot.png}
+    \caption{The frequency spectra of the different experiments and background noise. The higher the Reynolds number is, the higher energy output. Especially in the high frequency range, we can see the effect of higher Reynolds number clearly.}
     \label{fig:3}
 \end{figure}
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=180mm]{FrequencySpectraPlotZoomed.png}
-    \caption{}
+    \includegraphics[width=170mm]{FrequencySpectraPlotZoomed.png}
+    \caption{The same frequency spectra as in figure \ref{fig:3}, but here we focus on frequency between $10$ to $200$ Hz. The clear trend of higher energy output for higher Reynolds number is not as prominent here. For Re=4000 we get lower energy ouput than Re=50 and re=500 around $60$ Hz.}
     \label{fig:4}
 \end{figure}
 
 \section*{Discussion}
+The setup of the experiment was very interesting and enjoyable. Navigating LabView is sometimes a bit unintuitive, but despite that, we did setup the LabView program reasonably quick. The challenge was to figure out how to calculate the Reynolds number with the setup as seen in figure \ref{fig:1}. \bigskip
 
+After understanding and applying the theory, we met with the unfortunate reality of noise contamination. There were many others at the laboratory and they were all working on their own projects and experiments. This resulted in noise to the microphone that was not easily filtered or reduced. But even if the laboratory was empty, we still would have noise from the different vents, lights, us, etc. Also the sound waves coming from the water in the tube will be dampened by the thickness of the tube. This adds another layer of noise to the data. \bigskip
+
+We wanted to filter out noise from the data, but it was difficult to ascertain what frequency ranges needed to be filtered out. From the frequency spectra of the background noise in figure \ref{fig:3}, we ascertained that the noise had to be in the range between $100$ Hz and $250$ Hz. We were told that this was completely wrong by professor Atle Jensen, as the interesting frequency range was exactly that. Therefore we concluded that filtering the noise from the raw data would potentially remove frequencies that would have unintentional consequences on the results. \bigskip
+
+The very fact that we can make some observations at all like in figure \ref{fig:3} despite the noise is very fortunate. Then again, the noise had given us curious artifacts like in figure \ref{fig:4}, which makes our findings inconclusive.\bigskip
+
+One inconsequential, but interesting finding is shown in figure \ref{fig:2}. Here we can see that the Reynolds number as a function of water height is shaped like the log function. Perhaps with more data, we could see this log function more clearly, and if that is the case, at what point does it take a great amount of height, for the Reynolds number to increase significantly? \bigskip
+
+For further experimentation of measuring turbulence with a microphone, we need to be more diligent with noise reduction. Preferably the experiments should be carried out in a soundproof room, with a more powerful microphone. Also, if possible, the microphone should be placed on the inside of the tube, such that the sound waves are not dampened by the tube.
 
 \section*{Conclusion}
-
+From figure \ref{fig:3} we can clearly see that higher Reynolds numbers create more energy, and also that this energy is more prominent in the high frequency range. At the same time, we can see that our findings may be inconclusive because of noise contamination, as seen in figure \ref{fig:4}.
 
 \section*{Appendix}
 Visit the below link to see the matlab codes, the LabView files, and plots and images.
