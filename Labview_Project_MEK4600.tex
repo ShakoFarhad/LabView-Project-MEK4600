@@ -85,7 +85,7 @@ University of Oslo",
 \maketitle
 
 \begin{abstract}
-With ever increasing computational power, we get more and more numerical data on turbulence, but at the same time there is a lack of experimental data on turbulence. We examined turbulence of water flowing through a plastic tube by capturing the sound waves emitted with a microhphone. \\
+With ever increasing computational power, we get more and more numerical data on turbulence, but at the same time there is a lack of experimental data on turbulence. We examined turbulence of water flowing through a plastic tube by capturing the sound waves emitted with a microphone. \\
 Our experiments were set up in the following manner; water flows down from a tank, through a tube and a microphone picks up the flow sound. The sound signals from the microphone went through an amplifier and then the DAQ wrote the signals to a file that was stored on the computer. By adjusting the height of the water tank we strove to reach certain Reynold numbers, $50$, $500$, $2000$ and $4000$. \\
 The higher the Reynolds number, the higher the energy output is. At the same time the data was contaminated with noise. Because of this, our findings may be inconclusive.
 
@@ -155,16 +155,34 @@ To calculate the velocity, $v$, we used the formula $v=\frac{V}{t\cdot A}$, wher
 \begin{figure}[H]
     \centering
     \includegraphics[width=170mm]{FrequencySpectraPlotZoomed.png}
-    \caption{The same frequency spectra as in figure \ref{fig:3}, but here we focus on frequency between $10$ to $200$ Hz. The clear trend of higher energy output for higher Reynolds number is not as prominent here. For Re=4000 we get lower energy ouput than Re=50 and re=500 around $60$ Hz.}
+    \caption{The same frequency spectra as in figure \ref{fig:3}, but here we focus on frequency between $10$ to $200$ Hz. The clear trend of higher energy output for higher Reynolds number is not as prominent here. For Re=4000 we get lower energy output than Re=50 and re=500 around $60$ Hz.}
     \label{fig:4}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=170mm]{FrequencySpectraPlotWithoutNoise.png}
+    \caption{The noise has been subtracted from the other Power Spectra Density plots. We see that the noise did not alter the peak at around 145 Hz, but that there are dramatic reductions at some specific points like at 120 Hz.}
+    \label{fig:5}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=170mm]{SignalAmplitude.png}
+    \caption{Here we can see that all the measurements were within $\pm 10$ V, apart from a specific point at the end of the run. There we can see that the run for Reynolds number 4000 has registered above 10 V and below -10 V.}
+    \label{fig:6}
 \end{figure}
 
 \section*{Discussion}
 The setup of the experiment was very interesting and enjoyable. Navigating LabView is sometimes a bit unintuitive, but despite that, we did setup the LabView program reasonably quick. The challenge was to figure out how to calculate the Reynolds number with the setup as seen in figure \ref{fig:1}. \bigskip
 
-After understanding and applying the theory, we met with the unfortunate reality of noise contamination. There were many others at the laboratory and they were all working on their own projects and experiments. This resulted in noise to the microphone that was not easily filtered or reduced. But even if the laboratory was empty, we still would have noise from the different vents, lights, us, etc. Also the sound waves coming from the water in the tube will be dampened by the thickness of the tube. This adds another layer of noise to the data. \bigskip
+After understanding and applying the theory, we met with the unfortunate reality of noise contamination. There were many others at the laboratory and they were all working on their own projects and experiments. This resulted in noise to the microphone that was not easily filtered or reduced. But even if the laboratory was empty, we still would have noise from the different vents, lights, us, etc. Also the sound waves coming from the water in the tube will be dampened by the thickness of the tube. This adds another layer of noise to the data. For Reynolds number 50 and 4000 we used the valve to control the water flow, by not having it completely open, to get the right Reynolds number. This causes turbulence and noise as well. \bigskip
 
 We wanted to filter out noise from the data, but it was difficult to ascertain what frequency ranges needed to be filtered out. From the frequency spectra of the background noise in figure \ref{fig:3}, we ascertained that the noise had to be in the range between $100$ Hz and $250$ Hz. We were told that this was completely wrong by professor Atle Jensen, as the interesting frequency range was exactly that. Therefore we concluded that filtering the noise from the raw data would potentially remove frequencies that would have unintentional consequences on the results. \bigskip
+
+One curious artifact is that the data for Re=4000 in figure \ref{fig:6} has a spike that goes above 10 V and below -10 V. This should be impossible as the DAQ should have truncated that to 10 V and -10 V. This may be the reason to why we see Re=4000 have a lower energy output in \ref{fig:4} at around 145 Hz. \bigskip
+
+From figure \ref{fig:6} we can see that if we look away from the big spikes, the data is all contained within -1 to 1 V. This is acceptable, but with a better microphone and perhaps a better amplifier, we could use the range of the DAQ better. Using more of the -10 to 10 V range of the DAQ would give more precise readings. \bigskip
 
 The very fact that we can make some observations at all like in figure \ref{fig:3} despite the noise is very fortunate. Then again, the noise had given us curious artifacts like in figure \ref{fig:4}, which makes our findings inconclusive.\bigskip
 
@@ -173,7 +191,9 @@ One inconsequential, but interesting finding is shown in figure \ref{fig:2}. Her
 For further experimentation of measuring turbulence with a microphone, we need to be more diligent with noise reduction. Preferably the experiments should be carried out in a soundproof room, with a more powerful microphone. Also, if possible, the microphone should be placed on the inside of the tube, such that the sound waves are not dampened by the tube.
 
 \section*{Conclusion}
-From figure \ref{fig:3} we can clearly see that higher Reynolds numbers create more energy, and also that this energy is more prominent in the high frequency range. At the same time, we can see that our findings may be inconclusive because of noise contamination, as seen in figure \ref{fig:4}.
+From figure \ref{fig:3} we can clearly see that higher Reynolds numbers create more energy, and also that this energy is more prominent in the high frequency range. At the same time, we can see that our findings may be inconclusive because of noise contamination, as seen in figure \ref{fig:4}. \bigskip
+
+We subtracted the noise seen in figure \ref{fig:3} from all the other PSD plots and plotted the result in figure \ref{fig:5}. We can see that the overall trends do not change, but that especially the spike at around 145 Hz is unchanged even after directly subtracting by the noise. This could of course be because the noise is about 10 times lower in magnitude and therefore makes little difference when subtracting the other PSDs from it. 
 
 \section*{Appendix}
 Visit the below link to see the matlab codes, the LabView files, and plots and images.
